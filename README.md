@@ -32,6 +32,23 @@
 $ pnpm install
 ```
 
+## Environment Variables
+Below is an example of the environment variables required for this application:
+
+```dotenv
+NODE_ENV=development
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/orion-knowledge-test
+```
+
+- **PORT**: The port number where the application will run.
+    - **Default**: `3000` (if not defined).
+- **MONGO_URI**: The connection string for your MongoDB instance.
+    - **Mandatory**: Must point to your MongoDB database.
+- **NODE_ENV**: The environment in which the application is running (`development`, `production`, etc.).
+    - **Default**: `development` (if not defined).
+
+
 ## Compile and run the project
 
 ```bash
