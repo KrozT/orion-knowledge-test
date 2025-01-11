@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: orion-knowledge-tes-mongo-instance
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_DATABASE: main
+    volumes:
+      - mongo_data:/data/db
+
+  app:
+    build: .
+    container_name: orion-knowledge-test-app
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: 'mongodb://mongodb:27017/orion-knowledge-test'
+    command: npm run start:prod
+
+volumes:
+  mongo_data:
